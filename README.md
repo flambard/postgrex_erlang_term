@@ -32,7 +32,7 @@ In Ecto migrations, use `:erlang_term` as type on columns like so:
 
 ```elixir
 create table(:some_table) do
-  add :some_column, :erlang_table
+  add :some_column, :erlang_term
 end
 ```
 
