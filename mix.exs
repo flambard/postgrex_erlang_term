@@ -24,7 +24,8 @@ defmodule PostgrexErlangTerm.MixProject do
     [
       {:postgrex, "~> 0.16.5"},
       {:ecto, "~> 3.9"},
-      {:ecto_sql, "~> 3.6"}
+      {:ecto_sql, "~> 3.6"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
