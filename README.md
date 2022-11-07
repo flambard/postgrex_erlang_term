@@ -1,8 +1,11 @@
-# PostgrexErlangTerm
+PostgrexErlangTerm
+==================
 
-**TODO: Add description**
+Postgrex extension and Ecto type `ErlangTerm` for use with the PostgreSQL extension [`pg_erlang_term`](https://github.com/flambard/pg_erlang_term) for sending and storing arbitrary Erlang/Elixir terms efficiently as binaries while still being human-readable in SQL.
 
-## Installation
+
+Installation
+------------
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `postgrex_erlang_term` to your list of dependencies in `mix.exs`:
@@ -15,7 +18,30 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/postgrex_erlang_term>.
+Add `PostgrexErlangTerm.PostgresTypes` to your Ecto repo config:
+```elixir
+types: PostgrexErlangTerm.PostgresTypes
+```
 
+
+
+Usage
+-----
+
+In Ecto migrations, use `:erlang_term` as type on columns like so:
+
+```elixir
+create table(:some_table) do
+  add :some_column, :erlang_table
+end
+```
+
+On Ecto schemas, use the ErlangTerm type:
+
+```elixir
+alias PostgrexErlangTerm.ErlangTerm
+
+schema "some_table" do
+  field :some_column, ErlangTerm
+end
+```
